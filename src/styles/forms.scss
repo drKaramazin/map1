@@ -1,0 +1,9 @@
+$error-color: #ff0000;
+
+input {
+  outline: none;
+}
+
+input.error {
+  border: 1px solid $error-color;
+}

@@ -1,3 +1,17 @@
-<form class="marker-form">
-  <input type="text">
+<form class="marker-form" [formGroup]="form" (ngSubmit)="submit(form.value)">
+  <input formControlName="name" type="text" [ngClass]="{ error: form.invalid && showError }">
 </form>
+
+<div #markersContainer>
+  <div *ngFor="let marker of mapService.markers | async" class="marker-item" [attr.data-uuid]="marker.getUUID()">
+    {{ marker | markerName }}
+    <div class="btns">
+      <a (click)="flipActivation(marker)">
+        <img *ngIf="marker.active; else inactive" class="symbol" src="assets/eye-solid.svg">
+        <ng-template #inactive><img src="assets/eye-slash-solid.svg" class="symbol"></ng-template>
+      </a>
+      <a (click)="rename(marker)"><i class="fas fa-edit"></i></a>
+      <a (click)="delete(marker)"><i class="fas fa-eraser"></i></a>
+    </div>
+  </div>
+</div>

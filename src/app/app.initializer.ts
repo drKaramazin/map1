@@ -1,5 +1,5 @@
 import { environment } from '../environments/environment';
-import { YandexMapService } from './services/yandex-map.service';
+import { MapService } from './services/map.service';
 
 export function initApp(): () => Promise<void> {
 
