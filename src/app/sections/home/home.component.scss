@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+app-marker-table {
+  width: 30vw;
+  min-width: 150px;
+}
+
+app-yandex-map {
+  width: 70vw;
+}
