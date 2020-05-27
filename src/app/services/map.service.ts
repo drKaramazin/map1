@@ -27,12 +27,12 @@ export class MapService {
     private storage: StorageService,
   ) {
     interval(200).pipe(takeUntil(this.hasBeenInitialized)).subscribe(() => {
-      if ('ymaps' in window && this.onceInit) {
+      if ('yaMapReadyFlag' in window && this.onceInit) {
         this.onceInit = false;
         this.hasBeenInitialized.next();
         this.hasBeenInitialized.complete();
 
-        ymaps.ready(() => this.init());
+        this.init();
       }
     });
   }

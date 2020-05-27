@@ -22,14 +22,12 @@ export class YandexMapComponent implements AfterViewInit, OnDestroy {
   ) { }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.yandexMapService.initialized
-        .pipe(filter(val => val), takeUntil(this.willBeDestroyed))
-        .subscribe(() => {
-          this.yandexMapService.createMap(this.yaMapRef.nativeElement);
-          this.cdr.detectChanges();
-        });
-    }, 1000);
+    this.yandexMapService.initialized
+      .pipe(filter(val => val), takeUntil(this.willBeDestroyed))
+      .subscribe(() => {
+        this.yandexMapService.createMap(this.yaMapRef.nativeElement);
+        this.cdr.detectChanges();
+      });
   }
 
   ngOnDestroy() {
