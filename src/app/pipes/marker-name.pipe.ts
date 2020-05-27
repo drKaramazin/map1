@@ -3,7 +3,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Marker } from '../models/marker';
 
 @Pipe({
-  name: 'markerName'
+  name: 'markerName',
+  pure: false,
 })
 export class MarkerNamePipe implements PipeTransform {
 
